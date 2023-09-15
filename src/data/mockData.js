@@ -3,6 +3,7 @@ import { tokens } from "../theme";
 export const mockDataTeam = [
   {
     id: 1,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Jon Snow",
     email: "jonsnow@gmail.com",
     age: 35,
@@ -11,6 +12,7 @@ export const mockDataTeam = [
   },
   {
     id: 2,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Cersei Lannister",
     email: "cerseilannister@gmail.com",
     age: 42,
@@ -19,6 +21,7 @@ export const mockDataTeam = [
   },
   {
     id: 3,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Jaime Lannister",
     email: "jaimelannister@gmail.com",
     age: 45,
@@ -27,6 +30,7 @@ export const mockDataTeam = [
   },
   {
     id: 4,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Anya Stark",
     email: "anyastark@gmail.com",
     age: 16,
@@ -35,6 +39,7 @@ export const mockDataTeam = [
   },
   {
     id: 5,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Daenerys Targaryen",
     email: "daenerystargaryen@gmail.com",
     age: 31,
@@ -43,6 +48,7 @@ export const mockDataTeam = [
   },
   {
     id: 6,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Ever Melisandre",
     email: "evermelisandre@gmail.com",
     age: 150,
@@ -51,6 +57,7 @@ export const mockDataTeam = [
   },
   {
     id: 7,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Ferrara Clifford",
     email: "ferraraclifford@gmail.com",
     age: 44,
@@ -59,6 +66,7 @@ export const mockDataTeam = [
   },
   {
     id: 8,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Rossini Frances",
     email: "rossinifrances@gmail.com",
     age: 36,
@@ -67,6 +75,7 @@ export const mockDataTeam = [
   },
   {
     id: 9,
+    img:"https://i.postimg.cc/Hnw5cMnZ/gray.png",
     name: "Harvey Roxie",
     email: "harveyroxie@gmail.com",
     age: 65,

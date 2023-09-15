@@ -10,6 +10,11 @@ const Invoices = () => {
   const columns = [
     { field: "id", headerName: "ID" },
     {
+      field: "img",
+      headerName: "Image",
+      flex: 1,
+    },
+    {
       field: "name",
       headerName: "Name",
       flex: 1,
