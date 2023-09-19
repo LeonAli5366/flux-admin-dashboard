@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -19,8 +19,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
         color: colors.grey[100],
       }}
       onClick={() => setSelected(title)}
-      icon={icon}
-    >
+      icon={icon}>
       <Typography>{title}</Typography>
       <Link to={to} />
     </MenuItem>
@@ -32,9 +31,30 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const [width, setWidth] = useState(0);
+
+  const innerWidth = () => {
+    if (window.innerWidth < 700) {
+      setIsCollapsed(true);
+      console.log(window.innerWidth);
+    }
+
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("load", innerWidth);
+    return () => {
+      window.removeEventListener("load", innerWidth);
+    };
+  }, [width]);
 
   return (
-    <Box
+    <Box 
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -51,8 +71,7 @@ const Sidebar = () => {
         "& .pro-menu-item.active": {
           color: "#6870fa !important",
         },
-      }}
-    >
+      }}>
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
@@ -62,15 +81,13 @@ const Sidebar = () => {
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
-            }}
-          >
+            }}>
             {!isCollapsed && (
               <Box
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                ml="15px"
-              >
+                ml="15px">
                 <Typography variant="h3" color={colors.grey[100]}>
                   ADMINIS
                 </Typography>
@@ -97,8 +114,7 @@ const Sidebar = () => {
                   variant="h2"
                   color={colors.grey[100]}
                   fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
+                  sx={{ m: "10px 0 0 0" }}>
                   Ed Roh
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
@@ -120,8 +136,7 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
+              sx={{ m: "15px 0 5px 20px" }}>
               Data
             </Typography>
             {/* <Item
@@ -149,8 +164,7 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
+              sx={{ m: "15px 0 5px 20px" }}>
               Products
             </Typography>
 
@@ -169,13 +183,12 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
+
             {/* Our Story */}
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
+              sx={{ m: "15px 0 5px 20px" }}>
               Our Story
             </Typography>
             <Item
@@ -193,13 +206,11 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-
             {/* pages */}
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
-            >
+              sx={{ m: "15px 0 5px 20px" }}>
               Pages
             </Typography>
             <Item
