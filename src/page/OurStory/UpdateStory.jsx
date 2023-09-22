@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 const UpdateStory = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -13,8 +12,8 @@ const UpdateStory = () => {
   const [details, setDetails] = useState("");
   const [id, setId] = useState("");
 
-   //get single Story
-   const getSingleStory = async () => {
+  //get single Story
+  const getSingleStory = async () => {
     try {
       const { data } = await axios.get(
         `http://localhost:8080/api/v1/ourstory/single-story/${params.slug}`
@@ -79,10 +78,10 @@ const UpdateStory = () => {
           <div className="col">
             <div className="card w-auto bg-[#141b2d] shadow-xl">
               <div className="card-body items-center text-center">
-                <div className="text-5xl font-bold text-white pb-10">
+                <div className="md:text-5xl md:font-bold text-white md:pb-10 text-2xl pb-2">
                   Update story
                 </div>
-                <div className="m-1 w-75 flex gap-[100px]">
+                <div className="md:m-1 mr-1 md:w-75 md:flex md:gap-[100px]">
                   <div className="update-story-left">
                     <div className="mb-3">
                       {photo ? (
@@ -100,39 +99,39 @@ const UpdateStory = () => {
                             src={`http://localhost:8080/api/v1/ourstory/story-photo/${id}`}
                             alt=""
                             height={"200px"}
-                            className="img img-responsive w-[700px] h-auto"
+                            className="img img-responsive md:w-[700px] w-[300px] h-auto md:rounded-lg pb-2"
                           />
                         </div>
                       )}
                     </div>
                   </div>
 
-                  <div className="update-story-right flex flex-col justify-center gap-12">
+                  <div className="update-story-right flex flex-col justify-center md:gap-12 gap-2">
                     {/* story name  */}
                     <div className="mb-3">
                       <input
                         type="text"
                         value={title}
                         placeholder="write a name"
-                        className="form-control w-full h-[47px] text-center rounded font-medium text-[28px] mx-auto bg-base-200"
+                        className="form-control w-full md:h-[47px] text-center rounded font-medium md:text-[28px] mx-auto bg-base-200 text-[18px]"
                         onChange={(e) => setTitle(e.target.value)}
                       />
                     </div>
 
-                    {/* Price */}
+                    {/* Details */}
                     <div className="mb-3">
-                      <input
-                        type="text"
+                      <textarea
+                        rows="7"
                         value={details}
                         placeholder="write story"
-                        className="form-control w-full h-[47px] text-center rounded font-medium text-[28px] mx-auto"
+                        className="form-control py-4  text-center rounded font-medium text-[18px] mx-auto w-full"
                         onChange={(e) => setDetails(e.target.value)}
                       />
                     </div>
 
                     {/* photo upload */}
                     <div className="mb-3">
-                      <label className="btn btn-outline-secondary col-md-12 w-[310px]">
+                      <label className="btn btn-outline-secondary col-md-12 text-[14px] w-full h-[40px]">
                         {photo ? photo.name : "Upload New Photo"}
                         <input
                           type="file"
@@ -144,15 +143,15 @@ const UpdateStory = () => {
                       </label>
                     </div>
 
-                    <div className="mb-3">
+                    <div className="mb-0 mt-1 text-center flex gap-2 m-[22px]">
                       <button
-                        className="btn bg-green-600 mr-2 border-none font-bold"
+                        className="btn bg-green-600 md:mr-2 border-none font-bold w-[100px]"
                         onClick={handleUpdate}
                       >
                         UPDATE STORY
                       </button>
                       <button
-                        className="btn bg-red-600 ml-2 border-none font-bold"
+                        className="btn bg-red-600 ml-2 border-none font-bold w-[100px]"
                         onClick={handleDelete}
                       >
                         DELETE STORY
@@ -166,7 +165,7 @@ const UpdateStory = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default UpdateStory
+export default UpdateStory;

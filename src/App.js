@@ -2,13 +2,11 @@ import { useContext, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
 import Invoices from "./scenes/invoices";
 import Form from "./scenes/form";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import { Toaster } from "react-hot-toast";
-import HomeTopSec from "./page/Home/HomeTopSec";
 
 import CreateProduct from "./page/Product/CreateProduct";
 import AllProduct from "./page/Product/AllProduct";
@@ -54,12 +52,11 @@ function App() {
               <main className="content">
                 <Topbar setIsSidebar={setIsSidebar} />
                 <Routes>
-                  <Route path="/" element={<Dashboard />} />
                   <Route path="/invoices" element={<Invoices />} />
                   <Route path="/form" element={<Form />} />
 
                   {/* Product Route*/}
-                  <Route path="/allproduct" element={<AllProduct />} />
+                  <Route path="/" element={<AllProduct />} />
                   <Route path="/createproduct" element={<CreateProduct />} />
                   <Route
                     path="/updateproduct/:slug"
@@ -71,8 +68,6 @@ function App() {
                   <Route path="/createstory" element={<CreateStory />} />
                   <Route path="/updatestory/:slug" element={<UpdateStory />} />
 
-                  {/* Home Page All Route */}
-                  <Route path="/hometopsec" element={<HomeTopSec />} />
                 </Routes>
               </main>
             </div>

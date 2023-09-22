@@ -1,3 +1,4 @@
+import './product.scss'
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +35,7 @@ const CreateProduct = () => {
       toast.error("something went wrong");
     }
   };
+
   return (
     <>
       <div className="container text-black">
@@ -41,65 +43,89 @@ const CreateProduct = () => {
           <div className="col">
             <div className="card w-auto  shadow-xl">
               <div className="card-body items-center text-center">
-                <div className="text-5xl font-bold text-[#4cceac] pb-11">
+                <div className="md:text-5xl mD:font-bold text-[#4cceac] md:pb-11 text-2xl mr-[45px]">
                   Create Product
                 </div>
-                <div className="m-1 w-75 flex gap-[100px]">
-                  <div className="create-product-left">
+                <div className="m-1 w-75 md:flex md:gap-[100px] ">
+                  <div className="create-story-left">
                     {/* photo upload */}
-                    <div className="mb-3">
+                    <div className="md:mb-3">
                       {photo && (
                         <div className="text-center">
                           <img
                             src={URL.createObjectURL(photo)}
                             alt=""
                             height={"200px"}
-                            className="img img-responsive w-[700px] h-auto"
+                            className="img img-responsive w-[250px] h-[150px] md:w-[700px] md:h-[425] object-cover"
                           />
                         </div>
                       )}
                     </div>
 
                     {/* photo upload button*/}
-                    <div className="mb-3">
-                      <label className="btn btn-outline-secondary col-md-12 w-full mt-[60px]">
-                        {photo ? photo.name : "Upload Photo"}
+                    <div className="mb-3 ">
+                      <label
+                        className={`btn btn-outline-secondary col-md-12 w-[250px] h-[150px] md:w-[700px] md:h-[425px]  mr-[50px] ${
+                          photo ? "hidden" : ""
+                        }`}
+                      >
+                        {photo ? photo.name : "Click to Upload Photo"}
                         <input
                           type="file"
                           name="photo"
                           accept="image/*"
                           onChange={(e) => setPhoto(e.target.files[0])}
                           hidden
+                          required
                         />
                       </label>
                     </div>
                   </div>
-                  <div className="create-product-right flex flex-col  gap-5">
+                  <div className="create-product-right flex flex-col  gap-5 md:mt-[80px]">
                     {/* Product name  */}
-                    <div className="mb-3 items-center">
+                    <div className="md:mb-3">
                       <input
                         type="text"
                         value={name}
                         placeholder="Product name"
-                        className="form-control w-[300px] h-[40px] text-center rounded font-medium text-[28px] mx-auto"
+                        className="form-control md:w-[300px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setName(e.target.value)}
+                        required
                       />
                     </div>
 
                     {/* Price */}
-                    <div className="mb-3 mx-auto">
+                    <div className="md:mb-3  mx-auto">
                       <input
                         type="number"
                         value={price}
                         placeholder="Product Price"
-                        className="form-control w-[300px] h-[40px] text-center rounded font-medium text-[28px] mx-auto "
+                        className="form-control md:w-[300px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setPrice(e.target.value)}
+                        required
                       />
                     </div>
-
+                    {/* Change Photo */}
+                    <div className={` ${photo ? "block" : "hidden"}`}>
+                    <div className="md:mb-2">
+                      <label
+                        className={`btn btn-sm btn-outline-secondary col-md-12 md:w-full w-[250px] mr-[50px]`}
+                      >
+                        {photo ? "Change Photo" : photo.name }
+                        <input
+                          type="file"
+                          id='file-input'
+                          title=''
+                          name="photo"
+                          accept="image/*"
+                          onChange={(e) => setPhoto(e.target.files[0])}
+                        />
+                      </label>
+                    </div>
+                    </div>
                     <div className="mb-3">
                       <button
-                        className="btn font-semibold bg-[#4cceac] border-none w-full"
+                        className="btn font-semibold bg-[#4cceac] border-none md:w-full w-[250px] h-[30px] mr-[50px]"
                         onClick={handleCreate}
                       >
                         CREATE PRODUCT
