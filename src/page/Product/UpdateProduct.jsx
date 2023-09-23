@@ -82,6 +82,7 @@ const UpdateProduct = () => {
                 </div>
                 <div className="md:m-1 md:w-75 md:flex md:gap-[100px]">
                   <div className="update-product-left">
+                    {/* img preview */}
                     <div className="mb-3">
                       {photo ? (
                         <div className="text-center">

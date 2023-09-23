@@ -17,6 +17,8 @@ import UpdateStory from "./page/OurStory/UpdateStory";
 import AllStory from "./page/OurStory/AllStory";
 import { AuthContext } from "./page/ContextApi/UserContex";
 import { ClockLoader } from "react-spinners";
+import ChangePass from "./page/AdminProfile/ChangePass";
+import ChangeEmail from "./page/AdminProfile/ChangeEmail";
 
 function App() {
   const { user, adminLogin, loading } = useContext(AuthContext);
@@ -60,8 +62,11 @@ function App() {
                     <main className="content">
                       <Topbar setIsSidebar={setIsSidebar} />
                       <Routes>
+                        {/* Admin Profile */}
                         <Route path="/invoices" element={<Invoices />} />
-                        <Route path="/form" element={<Form />} />
+                        <Route path="/adminprofile" element={<Form />} />
+                        <Route path="/changepass" element={<ChangePass/>} />
+                        <Route path="/changeemail" element={<ChangeEmail/>} />
 
                         {/* Product Route*/}
                         <Route path="/" element={<AllProduct />} />
@@ -74,12 +79,13 @@ function App() {
                           element={<UpdateProduct />}
                         />
 
-                  {/* Our Story */}
-                  <Route path="/allstory" element={<AllStory />} />
-                  <Route path="/createstory" element={<CreateStory />} />
-                  <Route path="/updatestory/:slug" element={<UpdateStory />} />
-
-                       
+                        {/* Our Story */}
+                        <Route path="/allstory" element={<AllStory />} />
+                        <Route path="/createstory" element={<CreateStory />} />
+                        <Route
+                          path="/updatestory/:slug"
+                          element={<UpdateStory />}
+                        />
                       </Routes>
                     </main>
                   </div>
@@ -90,7 +96,8 @@ function App() {
                         <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-[500px]">
                           <form
                             onSubmit={handleAdminLogin}
-                            className="card-body text-[#141b2d]">
+                            className="card-body text-[#141b2d]"
+                          >
                             <div className="form-control ">
                               <h1 className="text-[#141b2d] text-5xl font-bold text-center mb-5">
                                 ADMIN LOGIN
@@ -118,7 +125,8 @@ function App() {
                               <label className="label">
                                 <Link
                                   href="#"
-                                  className="label-text-alt link link-hover mt-1">
+                                  className="label-text-alt link link-hover mt-1"
+                                >
                                   Forgot password?
                                 </Link>
                               </label>

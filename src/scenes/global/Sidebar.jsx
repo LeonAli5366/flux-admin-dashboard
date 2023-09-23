@@ -186,16 +186,30 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            {/* pages */}
+            {/* Admin Profile */}
             <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}>
-              Pages
+              Admin Profile
             </Typography>
             <Item
-              title="Profile Form"
-              to="/form"
+              title="Profile Page"
+              to="/adminprofile"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Update Email"
+              to="/changeemail"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Change Password"
+              to="/changepass"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
