@@ -41,10 +41,10 @@ const CreateStory = () => {
           <div className="col">
             <div className="card w-auto  shadow-xl">
               <div className="card-body items-center text-center">
-                <div className="md:text-5xl mD:font-bold text-[#4cceac] md:pb-11 text-2xl mr-[45px]">
+                <div className="md:text-5xl md:mt-[20px] md:font-bold text-[#4cceac] md:pb-11 text-2xl mr-[45px]">
                   Create Stories
                 </div>
-                <div className="m-1 w-75 md:flex md:gap-[100px]">
+                <div className="m-1 w-75 md:flex md:gap-[80px]">
                   <div className="create-product-left">
                     {/* photo upload */}
                     <div className="md:mb-3">
@@ -54,7 +54,7 @@ const CreateStory = () => {
                             src={URL.createObjectURL(photo)}
                             alt=""
                             height={"200px"}
-                            className="img img-responsive md:w-[700px] md:h-[425] w-[250px] h-[150px] object-cover"
+                            className="img img-responsive md:w-[700px] md:h-[425px] w-[250px] h-[150px] object-cover"
                           />
                         </div>
                       )}
@@ -77,14 +77,14 @@ const CreateStory = () => {
                       </label>
                     </div>
                   </div>
-                  <div className="create-product-right flex flex-col  gap-5 md:mt-[80px]">
+                  <div className="create-product-right flex flex-col  gap-5 md:mt-[20px]">
                     {/* Product name  */}
                     <div className="md:mb-3">
                       <input
                         type="text"
                         value={title}
                         placeholder="Story  Title"
-                        className="form-control md:w-[300px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
+                        className="form-control md:w-[360px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setTitle(e.target.value)}
                       />
                     </div>
@@ -95,7 +95,7 @@ const CreateStory = () => {
                         rows="7"
                         value={details}
                         placeholder="Story Details"
-                        className="form-control md:py-4 md:px-14 text-center rounded font-medium text-[18px] mx-auto mr-[50px] w-[250px]"
+                        className="form-control md:py-4 md:px-14 md:w-[360px] text-center rounded font-medium text-[18px] mx-auto mr-[50px] w-[250px]"
                         onChange={(e) => setDetails(e.target.value)}
                       />
                     </div>
@@ -104,7 +104,7 @@ const CreateStory = () => {
                     <div className={` ${photo ? "block" : "hidden"}`}>
                     <div className="md:mb-1">
                       <label
-                        className={`btn btn-sm btn-outline-secondary col-md-12 md:w-full w-[250px] mr-[50px]`}
+                        className={`btn btn-sm btn-outline-secondary col-md-12 md:w-[360px] w-[250px] mr-[50px]`}
                       >
                         {photo ? "Change Photo" : photo.name }
                         <input
@@ -121,7 +121,7 @@ const CreateStory = () => {
 
                     <div className="mb-3">
                       <button
-                        className="btn font-semibold bg-[#4cceac] border-none md:w-full w-[250px] h-[30px] mr-[50px]"
+                        className="btn font-semibold bg-[#4cceac] border-none md:w-[360px] w-[250px] h-[30px] mr-[50px]"
                         onClick={handleCreate}
                       >
                         CREATE NEW STORY

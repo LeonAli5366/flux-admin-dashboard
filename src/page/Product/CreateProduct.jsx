@@ -28,7 +28,7 @@ const CreateProduct = () => {
       } else {
         toast.success("Product Created Successfully");
         console.log("Product Created Successfully");
-        navigate("/allproduct");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -43,7 +43,7 @@ const CreateProduct = () => {
           <div className="col">
             <div className="card w-auto  shadow-xl">
               <div className="card-body items-center text-center">
-                <div className="md:text-5xl mD:font-bold text-[#4cceac] md:pb-11 text-2xl mr-[45px]">
+                <div className="md:text-5xl md:font-bold md:mt-[20px] text-[#4cceac] md:pb-11 text-2xl mr-[45px]">
                   Create Product
                 </div>
                 <div className="m-1 w-75 md:flex md:gap-[100px] ">
@@ -56,7 +56,7 @@ const CreateProduct = () => {
                             src={URL.createObjectURL(photo)}
                             alt=""
                             height={"200px"}
-                            className="img img-responsive w-[250px] h-[150px] md:w-[700px] md:h-[425] object-cover"
+                            className="img img-responsive w-[250px] h-[150px] md:w-[700px] md:h-[425px] object-cover"
                           />
                         </div>
                       )}
@@ -88,7 +88,7 @@ const CreateProduct = () => {
                         type="text"
                         value={name}
                         placeholder="Product name"
-                        className="form-control md:w-[300px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
+                        className="form-control md:w-[360px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setName(e.target.value)}
                         required
                       />
@@ -100,7 +100,7 @@ const CreateProduct = () => {
                         type="number"
                         value={price}
                         placeholder="Product Price"
-                        className="form-control md:w-[300px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
+                        className="form-control md:w-[360px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setPrice(e.target.value)}
                         required
                       />
@@ -109,7 +109,7 @@ const CreateProduct = () => {
                     <div className={` ${photo ? "block" : "hidden"}`}>
                     <div className="md:mb-2">
                       <label
-                        className={`btn btn-sm btn-outline-secondary col-md-12 md:w-full w-[250px] mr-[50px]`}
+                        className={`btn btn-sm btn-outline-secondary col-md-12 md:w-[360px] w-[250px] mr-[50px]`}
                       >
                         {photo ? "Change Photo" : photo.name }
                         <input
@@ -125,7 +125,7 @@ const CreateProduct = () => {
                     </div>
                     <div className="mb-3">
                       <button
-                        className="btn font-semibold bg-[#4cceac] border-none md:w-full w-[250px] h-[30px] mr-[50px]"
+                        className="btn font-semibold bg-[#4cceac] border-none md:w-[360px] w-[250px] h-[30px] mr-[50px]"
                         onClick={handleCreate}
                       >
                         CREATE PRODUCT

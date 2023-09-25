@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Invoices from "./scenes/invoices";
 
@@ -64,7 +63,7 @@ function App() {
                     <Toaster position="top-center" reverseOrder={false} />
                     <Sidebar isSidebar={isSidebar} />
                     <main className="content">
-                      <Topbar setIsSidebar={setIsSidebar} />
+                      
                       <Routes>
                         {/* Admin Profile */}
                         <Route path="/invoices" element={<Invoices />} />

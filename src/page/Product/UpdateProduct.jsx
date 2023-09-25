@@ -63,7 +63,7 @@ const UpdateProduct = () => {
         `http://localhost:8080/api/v1/product/delete-product/${id}`
       );
       toast.success("Product Deleted Succfully");
-      navigate("/allproducts");
+      navigate("/");
       console.log("Product Deleted Succfully");
     } catch (error) {
       toast.error("Something went wrong");

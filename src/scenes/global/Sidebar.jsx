@@ -59,6 +59,7 @@ console.log(window.innerWidth);
 
   return (
     <Box
+    height="100vh"
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -104,7 +105,7 @@ console.log(window.innerWidth);
 
           {!isCollapsed && (
             <div>
-              <div className="rounded-full    flex justify-center">
+              <div className="rounded-full flex justify-center">
                 <img
                   className="w-20 rounded-full"
                   src={`https://hips.hearstapps.com/hmg-prod/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.406xw:1.00xh;0.376xw,0&resize=1200:*`}
