@@ -6,6 +6,9 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
+import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { AuthContext } from "../../page/ContextApi/UserContex";
@@ -142,7 +145,7 @@ console.log(window.innerWidth);
             <Item
               title="All Product"
               to="/"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<Inventory2OutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -150,7 +153,7 @@ console.log(window.innerWidth);
             <Item
               title="Create Product"
               to="/createproduct"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<UnarchiveOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -165,7 +168,7 @@ console.log(window.innerWidth);
             <Item
               title="All Story"
               to="/allstory"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<NewspaperOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
