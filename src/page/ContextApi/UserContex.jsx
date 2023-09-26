@@ -3,6 +3,10 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
+  updateEmail,
+  updatePassword,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/Firebase.config";
 
@@ -15,8 +19,23 @@ const UserContex = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const adminLogin = (email, password) => {
-    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logOut = () => {
+    return signOut(auth);
+  };
+
+  const updateUser = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
+  const updateAdminPassword = (password) => {
+    return updatePassword(auth.currentUser, password);
+  };
+
+  const updateAdminEmail = (email) => {
+    return updateEmail(auth.currentUser, email);
   };
 
   useEffect(() => {
@@ -29,7 +48,15 @@ const UserContex = ({ children }) => {
     };
   }, []);
 
-  const value = { user, loading, adminLogin };
+  const value = {
+    user,
+    loading,
+    adminLogin,
+    logOut,
+    updateUser,
+    updateAdminPassword,
+    updateAdminEmail,
+  };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

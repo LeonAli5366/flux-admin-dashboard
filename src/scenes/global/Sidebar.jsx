@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -8,10 +8,12 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { AuthContext } from "../../page/ContextApi/UserContex";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   return (
     <MenuItem
       active={selected === title}
@@ -26,15 +28,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-
-
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
   const [width, setWidth] = useState(0);
-
+  const { user } = useContext(AuthContext);
+  
+console.log(window.innerWidth);
   const innerWidth = () => {
     if (window.innerWidth < 700) {
       setIsCollapsed(true);
@@ -55,12 +57,8 @@ const Sidebar = () => {
     };
   }, [width]);
 
-  
-
-  
-
   return (
-    <Box 
+    <Box
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -105,40 +103,32 @@ const Sidebar = () => {
           </MenuItem>
 
           {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
+            <div>
+              <div className="rounded-full    flex justify-center">
                 <img
-                  alt="profile-user"
-                  width="100px"
-                  height="100px"
-                  src={`../../assets/user.png`}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
+                  className="w-20 rounded-full"
+                  src={`https://hips.hearstapps.com/hmg-prod/images/keanu-reeves-john-wick-4-1668099111.jpg?crop=0.406xw:1.00xh;0.376xw,0&resize=1200:*`}
+                  alt=""
                 />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}>
-                  Ed Roh
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Flux Car Admin
-                </Typography>
-              </Box>
-            </Box>
+              </div>
+              <div className="text-center">
+                <h1 className="text-3xl font-bold text-sky-600">
+                  {user?.displayName}
+                </h1>
+                <h1 className="text-xl mt-2 mb-7 text-white">Flux Admin</h1>
+              </div>
+            </div>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
+            
               title="Home"
               to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
 
             {/* Product */}
             <Typography
@@ -195,18 +185,25 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Profile Page"
-              to="/adminprofile"
+              to="/profile"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
+              title="Update Name"
+              to="/userName"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            {/* <Item
               title="Update Email"
               to="/changeemail"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Item
               title="Change Password"
               to="/changepass"
@@ -214,10 +211,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-
-
-
           </Box>
         </Menu>
       </ProSidebar>

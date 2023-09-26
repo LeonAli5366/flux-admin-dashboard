@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../ContextApi/UserContex";
 
-const index = () => {
+const Form = () => {
+  const { user, logOut,  } = useContext(AuthContext);
+  console.log(user)
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("log out success full");
+        
+      })
+      .error((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="">
       <div className="flex flex-col items-center justify-center bordermx-auto rounded profile-wrapper gap-5 md:py-20 py-7 overflow-hidden md:max-w-[500px] mx-auto">
@@ -18,32 +32,24 @@ const index = () => {
         </span>
 
         <form className="flex flex-col md:w-full items-center gap-5">
-          <div className="flex flex-col md:w-full w-[270px]">
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="name"
-              disabled
-              className="bg-white px-5 py-2 rounded"
-            />
+          <div className="flex flex-col w-full">
+            <div className="text-black bg-white p-4 rounded font-semibold">
+              {user?.displayName}
+            </div>
           </div>
 
           {/* eamil */}
 
           <div className="flex flex-col w-full">
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="email"
-              disabled
-              className="bg-white px-5 py-2 rounded"
-            />
+            <div className="text-black bg-white p-4 rounded font-semibold">
+              {user?.email}
+            </div>
           </div>
 
           <div className="flex justify-end w-full">
-            <button className="btn btn-sm bg-red-700 border-none w-[150px]">
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm bg-red-700 border-none w-[150px]">
               logout
             </button>
           </div>
@@ -53,4 +59,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Form;

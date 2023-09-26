@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Invoices from "./scenes/invoices";
-import Form from "./scenes/form";
+
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import { Toaster } from "react-hot-toast";
@@ -19,12 +19,15 @@ import { AuthContext } from "./page/ContextApi/UserContex";
 import { ClockLoader } from "react-spinners";
 import ChangePass from "./page/AdminProfile/ChangePass";
 import ChangeEmail from "./page/AdminProfile/ChangeEmail";
+import Form from "./page/AdminProfile/Form";
+import ChangeUserName from "./page/AdminProfile/ChangeUserName";
 
 function App() {
   const { user, adminLogin, loading } = useContext(AuthContext);
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleAdminLogin = (event) => {
     event.preventDefault();
@@ -35,6 +38,7 @@ function App() {
     adminLogin(email, password)
       .then((result) => {
         const user = result.user;
+        navigate("/");
         console.log(user);
       })
       .catch((error) => {
@@ -49,7 +53,7 @@ function App() {
         <CssBaseline />
         <div>
           {loading ? (
-            <div className="flex justify-center pt-[20vh]">
+            <div className="flex justify-center py-[20vh]">
               <ClockLoader color="#36d7b7" size={500} />
             </div>
           ) : (
@@ -64,9 +68,10 @@ function App() {
                       <Routes>
                         {/* Admin Profile */}
                         <Route path="/invoices" element={<Invoices />} />
-                        <Route path="/adminprofile" element={<Form />} />
-                        <Route path="/changepass" element={<ChangePass/>} />
-                        <Route path="/changeemail" element={<ChangeEmail/>} />
+                        <Route path="/changepass" element={<ChangePass />} />
+                        <Route path="/changeemail" element={<ChangeEmail />} />
+                        <Route path="/profile" element={<Form />} />
+                        <Route path="/userName" element={<ChangeUserName />} />
 
                         {/* Product Route*/}
                         <Route path="/" element={<AllProduct />} />
@@ -96,8 +101,7 @@ function App() {
                         <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-[500px]">
                           <form
                             onSubmit={handleAdminLogin}
-                            className="card-body text-[#141b2d]"
-                          >
+                            className="card-body text-[#141b2d]">
                             <div className="form-control ">
                               <h1 className="text-[#141b2d] text-5xl font-bold text-center mb-5">
                                 ADMIN LOGIN
@@ -110,6 +114,7 @@ function App() {
                                 name="email"
                                 placeholder="email"
                                 className="input input-bordered"
+                                required
                               />
                             </div>
                             <div className="form-control">
@@ -121,15 +126,18 @@ function App() {
                                 name="password"
                                 placeholder="password"
                                 className="input input-bordered"
+                                required
                               />
                               <label className="label">
                                 <Link
                                   href="#"
-                                  className="label-text-alt link link-hover mt-1"
-                                >
+                                  className="label-text-alt link link-hover mt-1">
                                   Forgot password?
                                 </Link>
                               </label>
+                            </div>
+                            <div>
+                              <h1 className="text-red-600">{error}</h1>
                             </div>
                             <div className="form-control mt-6">
                               <button type="submit" className="btn btn-primary">
