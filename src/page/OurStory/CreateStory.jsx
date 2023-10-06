@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const CreateStory = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [photo, setPhoto] = useState("");
   const [details, setDetails] = useState("");
   //craete product function
@@ -14,6 +15,7 @@ const CreateStory = () => {
     try {
       const storyData = new FormData();
       storyData.append("title", title);
+      storyData.append("subtitle", subtitle);
       storyData.append("details", details);
       storyData.append("photo", photo);
       const { data } = axios.post(
@@ -79,13 +81,24 @@ const CreateStory = () => {
                   </div>
                   <div className="create-product-right flex flex-col  gap-5 md:mt-[20px]">
                     {/* Product name  */}
-                    <div className="md:mb-3">
+                    <div className="md:mb-1">
                       <input
                         type="text"
                         value={title}
                         placeholder="Story  Title"
                         className="form-control md:w-[360px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
                         onChange={(e) => setTitle(e.target.value)}
+                      />
+                    </div>
+
+                    {/* Product subtitle  */}
+                    <div className="md:mb-1">
+                      <input
+                        type="text"
+                        value={subtitle}
+                        placeholder="Story  Subtitle"
+                        className="form-control md:w-[360px] md:h-[40px] text-center rounded md:font-medium md:text-[28px] mx-auto text-[18px] w-[250px] mr-[50px]"
+                        onChange={(e) => setSubtitle(e.target.value)}
                       />
                     </div>
 

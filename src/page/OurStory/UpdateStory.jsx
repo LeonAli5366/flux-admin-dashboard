@@ -8,6 +8,7 @@ const UpdateStory = () => {
   const params = useParams();
   //All State
   const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
   const [photo, setPhoto] = useState("");
   const [details, setDetails] = useState("");
   const [id, setId] = useState("");
@@ -20,6 +21,7 @@ const UpdateStory = () => {
       );
       setId(data.story._id);
       setTitle(data.story.title);
+      setSubtitle(data.story.subtitle)
       setDetails(data.story.details);
       console.log(data);
     } catch (error) {
@@ -37,6 +39,7 @@ const UpdateStory = () => {
     try {
       const storyData = new FormData();
       storyData.append("title", title);
+      storyData.append("subtitle", subtitle);
       storyData.append("details", details);
       photo && storyData.append("photo", photo);
       const { data } = await axios.put(
@@ -106,9 +109,9 @@ const UpdateStory = () => {
                     </div>
                   </div>
 
-                  <div className="update-story-right flex flex-col justify-center md:gap-12 gap-2">
+                  <div className="update-story-right flex flex-col justify-center md:gap-5 gap-2">
                     {/* story name  */}
-                    <div className="mb-3">
+                    <div className="">
                       <input
                         type="text"
                         value={title}
@@ -118,8 +121,19 @@ const UpdateStory = () => {
                       />
                     </div>
 
+                    {/* story subtitle  */}
+                    <div className="">
+                      <input
+                        type="text"
+                        value={subtitle}
+                        placeholder="change sub title"
+                        className="form-control w-full md:h-[47px] text-center rounded  md:text-[28px] mx-auto bg-base-200 text-[18px]"
+                        onChange={(e) => setSubtitle(e.target.value)}
+                      />
+                    </div>
+
                     {/* Details */}
-                    <div className="mb-3">
+                    <div className="">
                       <textarea
                         rows="7"
                         value={details}
@@ -130,7 +144,7 @@ const UpdateStory = () => {
                     </div>
 
                     {/* photo upload */}
-                    <div className="mb-3">
+                    <div className="">
                       <label className="btn btn-outline-secondary col-md-12 text-[14px] w-full h-[40px]">
                         {photo ? photo.name : "Upload New Photo"}
                         <input

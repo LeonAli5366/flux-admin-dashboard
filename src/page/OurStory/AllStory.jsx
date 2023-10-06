@@ -40,8 +40,7 @@ const AllStory = () => {
                     />
                       <h5 className="card-title">{s.title}</h5>
                       <p className="card-text font-medium md:text-lg md:w-[350px]">{s.details.slice(0,100)}...</p>
-                      <p className="card-text md:font-medium md:text-sm">Create : {s.createdAt}</p>
-                      <p className="card-text md:font-medium md:text-sm">Update : {s.updatedAt}</p>
+                      <p className="card-text md:font-medium md:text-2xl">{s.subtitle}</p>
                     </div>
                 </div>
                 </Link>
