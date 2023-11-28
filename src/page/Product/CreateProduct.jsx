@@ -19,7 +19,7 @@ const CreateProduct = () => {
       productData.append("price", price);
       productData.append("photo", photo);
       const { data } = axios.post(
-        `http://localhost:8080/api/v1/product/create-product`,
+        `https://flux-technologies.onrender.com/api/v1/product/create-product`,
         productData
       );
       if (data?.success) {

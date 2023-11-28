@@ -19,7 +19,7 @@ const CreateStory = () => {
       storyData.append("details", details);
       storyData.append("photo", photo);
       const { data } = axios.post(
-        `http://localhost:8080/api/v1/ourstory/create-story`,
+        `https://flux-technologies.onrender.com/api/v1/ourstory/create-story`,
         storyData
       );
       if (data?.success) {

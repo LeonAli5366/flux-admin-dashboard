@@ -9,7 +9,7 @@ const AllStory = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/ourstory/get-story`
+        `https://flux-technologies.onrender.com/api/v1/ourstory/get-story`
       );
       setStory(data.story);
     } catch (error) {
@@ -34,7 +34,7 @@ const AllStory = () => {
                 <div className="div">
                     <div className="card-body">
                     <img
-                      src={`http://localhost:8080/api/v1/ourstory/story-photo/${s._id}`}
+                      src={`https://flux-technologies.onrender.com/api/v1/ourstory/story-photo/${s._id}`}
                       className="card-img-top w-[270px] h-[150px] object-cover md:w-[350px] md:h-[220px]"
                       alt="s.name"
                     />

@@ -9,7 +9,7 @@ const AllProduct = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/get-product`
+        `https://flux-technologies.onrender.com/api/v1/product/get-product`
       );
       setProducts(data.products);
     } catch (error) {
@@ -33,7 +33,7 @@ const AllProduct = () => {
                 <Link key={p._id} to={`/updateproduct/${p.slug}`}>
                   <div className="card m-2" >
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                      src={`https://flux-technologies.onrender.com/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top w-[270px] h-[150px] object-cover md:w-[430px] md:h-[250px] md:object-cover"
                       alt="p.name"
                     />

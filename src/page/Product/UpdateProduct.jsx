@@ -15,7 +15,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/single-product/${params.slug}`
+        `https://flux-technologies.onrender.com/api/v1/product/single-product/${params.slug}`
       );
       setId(data.product._id);
       setName(data.product.name);
@@ -39,7 +39,7 @@ const UpdateProduct = () => {
       productData.append("price", price);
       photo && productData.append("photo", photo);
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/product/update-product/${id}`,
+        `https://flux-technologies.onrender.com/api/v1/product/update-product/${id}`,
         productData
       );
       if (data?.success) {
@@ -60,7 +60,7 @@ const UpdateProduct = () => {
       let answer = window.prompt("Are You Sure want to delete this product ?");
       if (!answer) return;
       await axios.delete(
-        `http://localhost:8080/api/v1/product/delete-product/${id}`
+        `https://flux-technologies.onrender.com/api/v1/product/delete-product/${id}`
       );
       toast.success("Product Deleted Succfully");
       navigate("/");
@@ -96,7 +96,7 @@ const UpdateProduct = () => {
                       ) : (
                         <div className="text-center">
                           <img
-                            src={`http://localhost:8080/api/v1/product/product-photo/${id}`}
+                            src={`https://flux-technologies.onrender.com/api/v1/product/product-photo/${id}`}
                             alt=""
                             height={"200px"}
                             className="img img-responsive md:w-[700px] w-[300px] h-auto md:rounded-lg rounded pb-2"

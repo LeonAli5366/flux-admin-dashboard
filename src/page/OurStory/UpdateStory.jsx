@@ -17,7 +17,7 @@ const UpdateStory = () => {
   const getSingleStory = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/ourstory/single-story/${params.slug}`
+        `https://flux-technologies.onrender.com/api/v1/ourstory/single-story/${params.slug}`
       );
       setId(data.story._id);
       setTitle(data.story.title);
@@ -43,7 +43,7 @@ const UpdateStory = () => {
       storyData.append("details", details);
       photo && storyData.append("photo", photo);
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/ourstory/update-story/${id}`,
+        `https://flux-technologies.onrender.com/api/v1/ourstory/update-story/${id}`,
         storyData
       );
       if (data?.success) {
@@ -64,7 +64,7 @@ const UpdateStory = () => {
       let answer = window.prompt("Are You Sure want to delete this story ?");
       if (!answer) return;
       await axios.delete(
-        `http://localhost:8080/api/v1/ourstory/delete-story/${id}`
+        `https://flux-technologies.onrender.com/api/v1/ourstory/delete-story/${id}`
       );
       toast.success("Story Deleted Succfully");
       navigate("/allstory");
@@ -99,7 +99,7 @@ const UpdateStory = () => {
                       ) : (
                         <div className="text-center">
                           <img
-                            src={`http://localhost:8080/api/v1/ourstory/story-photo/${id}`}
+                            src={`https://flux-technologies.onrender.com/api/v1/ourstory/story-photo/${id}`}
                             alt=""
                             height={"200px"}
                             className="img img-responsive md:w-[700px] w-[300px] h-auto md:rounded-lg pb-2"
@@ -126,7 +126,7 @@ const UpdateStory = () => {
                       <input
                         type="text"
                         value={subtitle}
-                        placeholder="change sub title"
+                        placeholder="change subtitle"
                         className="form-control w-full md:h-[47px] text-center rounded  md:text-[28px] mx-auto bg-base-200 text-[18px]"
                         onChange={(e) => setSubtitle(e.target.value)}
                       />
